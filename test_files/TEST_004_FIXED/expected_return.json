@@ -1,0 +1,54 @@
+{
+    "reactions_heading": {
+        "label": "Reaction Results",
+        "units": "heading"
+    },
+    "R_a": {
+        "label": "Fy A",
+        "symbol": "R_a",
+        "value": 100,
+        "units": "kN"
+    },
+    "M_a": {
+        "label": "Mz A",
+        "symbol": "M_a",
+        "value": 37.5,
+        "units": "kNm"
+    },
+    "R_b": {
+        "label": "Fy B",
+        "symbol": "R_b",
+        "value": 100,
+        "units": "kN"
+    },
+    "M_b": {
+        "label": "Mz B",
+        "symbol": "M_b",
+        "value": -37.5,
+        "units": "kNm"
+    },
+    "M_max": {
+        "label": "Max Bending",
+        "symbol": "M<sup>*</sup>+",
+        "value": 37.5,
+        "units": "kNm"
+    },
+    "M_min": {
+        "label": "Min Bending",
+        "symbol": "M<sup>*</sup>-",
+        "value": -37.5,
+        "units": "kNm"
+    },
+    "V_max": {
+        "label": "Max Shear Force",
+        "symbol": "V<sup>*</sup>+",
+        "value": 100,
+        "units": "kN"
+    },
+    "V_in": {
+        "label": "Min Shear Force",
+        "symbol": "V<sup>*</sup>-",
+        "value": -100,
+        "units": "kN"
+    }
+}

@@ -1,0 +1,42 @@
+{
+	"reactions_heading": {
+		"label": "Reactions and Member Forces",
+		"units": "heading"
+	},
+	"R_a": {
+		"label": "Fy A",
+		"symbol": "R<sub>a</sub>",
+		"value": 3.5,
+		"units": "kN"
+	},
+	"M_a": {
+		"label": "Mz A",
+		"symbol": "M<sub>a</sub>",
+		"value": 1.4,
+		"units": "kNm"
+	},
+	"M_max": {
+		"label": "Max Bending",
+		"symbol": "M<sup>*</sup>+",
+		"value": 0,
+		"units": "kNm"
+	},
+	"M_min": {
+		"label": "Min Bending",
+		"symbol": "M<sup>*</sup>-",
+		"value": -1.4,
+		"units": "kNm"
+	},
+	"V_max": {
+		"label": "Max Shear Force",
+		"symbol": "V<sup>*</sup>+",
+		"value": 3.5,
+		"units": "kN"
+	},
+	"V_in": {
+		"label": "Min Shear Force",
+		"symbol": "V<sup>*</sup>-",
+		"value": 0,
+		"units": "kN"
+	}
+}
