@@ -8,21 +8,13 @@
 		"access": "public",
 		"default_unit_system": "metric",
 		"contact": {
-			"name": "Sam Carigliano",
+			"name": "George Chard",
 			"role": "",
-			"email": "sam@skyciv.com",
+			"email": "George.Chard@skyciv.com",
 			"company": "SkyCiv Engineering",
 			"logo": "https://skyciv.com/media/logos/logo-pack/SkyCiv_Logo_Dark_Poweredby.png"
 		},
-		"related": {
-			"title": "<i class='calculator icon'></i>",
-			"Column Analysis Calculator": {
-				"uid": "1007-column-calculator"
-			},
-			"2D Stiffness Method Analysisr": {
-				"uid": "1006-stiffness-method-calculator"
-			}	
-		}
+		"related": {}
 	},
 	"input_variables": {
 		"ui_div": {
@@ -30,7 +22,6 @@
 			"id": "ui-div",
 			"qd_center": true, 
 			"allow_graphic_report": false
-	
 		},
 		"sub_heading1": {
 			"type": "heading",
@@ -38,96 +29,59 @@
 		},
 		"L": {
 			"type": "number",
-			"label": "Beam Span, L",
+			"integer": true,
+			"label": "Beam Span (L)",
 			"symbol": "L",
 			"units": "mm",
 			"info": "Length of your Beam",
 			"default": 1200,
-			"min": 10
+			"min": 10,
+			"max": 3000
 		},
-		"support_a": {
-			"label": "Support at A",
-			"symbol": "S_{A}",
-			"info": "Support type at end A",
-			"default": "Fixed",
-			"type": "dropdown",
-			"options": [
-				{
-					"name": "Fixed (FFFFFF)",
-					"value": "Fixed"
-				},
-				{
-					"selected": true,
-					"name": "Pinned (FFFFFR)",
-					"value": "Pinned"
-				},
-				{
-					"name": "Roller (RFFRRR)",
-					"value": "Roller"
-				},
-				{
-					"name": "Cantilever",
-					"value": "Cantilever"
-				}
-			]
-		},
-		"support_b": {
-			"label": "Support at B",
-			"symbol": "S_{B}",
-			"info": "Support type at end B",
-			"default": "",
-			"type": "dropdown",
-			"nullable": true,
-			"options": [
-				{
-					"name": "Fixed (FFFFFF)",
-					"value": "Fixed"
-				},
-				{
-					"name": "Pinned (FFFFFR)",
-					"value": "Pinned"
-				},
-				{
-					"name": "Roller (RFFRRR)",
-					"value": "Roller",
-					"selected": true
-				},
-				{
-					"name": "Cantilever",
-					"value": "Cantilever"
-				}
-			]
-		},
-		"sub_heading2": {
+		"Loading_Heading": {
 			"type": "heading",
-			"label": "Loads"
+			"label": "Loading"
 		},
 		"DL_mag": {
 			"type": "number",
-			"label": "Distributed Load Magnitude",
+			"label": "Distributed Load",
 			"symbol": "D_{L}",
 			"units": "kN/m",
 			"info": "The uniform distributed load magnitude on your beam",
 			"default": 1.25,
 			"min": 0,
 			"max": 400,
-			"step": 1,
-			"nullable": true
+			"step": 1
 		},
 		"PL_mag": {
-			"type": "number",
-			"label": "Point Load Magnitude",
+			"type": "dropdown",
+			"label": "Point Load",
 			"symbol": "D_{L}",
 			"units": "kN",
 			"info": "Magnitude of the point load",
-			"default": 2,
-			"min": 0,
-			"step": 1,
-			"nullable": true
+			"options": [
+				{
+					"name": "No Force",
+					"value": 0
+				},
+				{
+					"name": 1,
+					"value": 1
+				},
+				{
+					"name": 2,
+					"value": 2,
+					"selected": true
+				},
+				{
+					"name": 5,
+					"value": 5
+				}
+			]
 		},
 		"PL_dist": {
 			"type": "number",
-			"label": "Point Load Distance, d",
+			"label": "Point Load Distance (d)",
 			"symbol": "PL_{d}",
 			"units": "mm",
 			"info": "Distance of point load from the start of the member",
@@ -135,6 +89,10 @@
 			"min": 0,
 			"step": 1,
 			"nullable": true
+		},
+		"Deflection_Heading": {
+			"type": "heading",
+			"label": "Deflection"
 		},
 		"calculate_deflection": {
 			"type": "checkbox",
@@ -178,7 +136,7 @@
 		},
 		"I_z": {
 			"type": "number",
-			"label": "Moment of Inertia about Z",
+			"label": "Moment of Inertia (I<sub>Z</sub>)",
 			"symbol": "I_z",
 			"units": "mm^4",
 			"info": "Moment of Inertia about Z Axis",
