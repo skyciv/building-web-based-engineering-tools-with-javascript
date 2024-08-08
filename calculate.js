@@ -1,9 +1,9 @@
 
 module.exports = async function (input_json) {
 
-	let { L, DL_mag, PL_mag, PL_dist, calculate_deflection, E, I_z } = input_json; //unpack your variables here
+	let { L, w, P, PL_dist, calculate_deflection, E, I_z } = input_json; //Retrieve variables from config.json input
 
-
+	//sum_moments_A = PL_mag * PL_dist / 1000 + 
 
 	// ===== RESULTS ------
 
@@ -127,7 +127,7 @@ module.exports = async function (input_json) {
 			// 'M_max': {
 			// 	'label': 'Max Bending',
 			// 	'symbol': 'M<sup>*</sup>+',
-			// 	'value': bmd_max,
+			// 	'value': max_dist_moment,
 			// 	'units': 'kNm'
 			// },
 			// 'M_min': {
@@ -151,12 +151,7 @@ module.exports = async function (input_json) {
 		}
 	};
 
-	// if (!R_a) delete output.results['R_a'];
-	// if (!R_b) delete output.results['R_b'];
-	// if (!M_a) delete output.results['M_a'];
-	// if (!M_b) delete output.results['M_b'];
-
-	// if (calculate_deflection) {
+	//if (calculate_deflection) {
 	// 	output.results['Heading A'] = {
 	// 		'label': 'Deflection Results',
 	// 		'units': 'heading',

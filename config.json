@@ -2,10 +2,9 @@
 	"meta": {
 		"name": "Simply Supported Beam Analysis",
 		"short_description": "Simple Supported Beam Analysis Software to calculate reactions, bending, shear and deflection results.",
-		"long_description": "Simply Supported Beam Analysis that takes in inputs for a distributed load on a simply supported beam. Allows users to export a simplified report with a summary of results and diagrams for bending moment, shear force and deflection if I and E are inputed.",
-		"tags": "draft, beam, calculator",
+		"tags": "beam, calculator",
 		"category": "analysis",
-		"access": "public",
+		"access": "private",
 		"default_unit_system": "metric",
 		"contact": {
 			"name": "George Chard",
@@ -13,8 +12,7 @@
 			"email": "George.Chard@skyciv.com",
 			"company": "SkyCiv Engineering",
 			"logo": "https://skyciv.com/media/logos/logo-pack/SkyCiv_Logo_Dark_Poweredby.png"
-		},
-		"related": {}
+		}
 	},
 	"input_variables": {
 		"ui_div": {
@@ -23,7 +21,7 @@
 			"qd_center": true, 
 			"allow_graphic_report": false
 		},
-		"sub_heading1": {
+		"Arrangement_Heading": {
 			"type": "heading",
 			"label": "Arrangement"
 		},
@@ -42,10 +40,10 @@
 			"type": "heading",
 			"label": "Loading"
 		},
-		"DL_mag": {
+		"w": {
 			"type": "number",
 			"label": "Distributed Load",
-			"symbol": "D_{L}",
+			"symbol": "w",
 			"units": "kN/m",
 			"info": "The uniform distributed load magnitude on your beam",
 			"default": 1.25,
@@ -53,10 +51,10 @@
 			"max": 400,
 			"step": 1
 		},
-		"PL_mag": {
+		"P": {
 			"type": "dropdown",
 			"label": "Point Load",
-			"symbol": "D_{L}",
+			"symbol": "P",
 			"units": "kN",
 			"info": "Magnitude of the point load",
 			"options": [
@@ -87,8 +85,7 @@
 			"info": "Distance of point load from the start of the member",
 			"default": 250,
 			"min": 0,
-			"step": 1,
-			"nullable": true
+			"step": 1
 		},
 		"Deflection_Heading": {
 			"type": "heading",
@@ -128,11 +125,10 @@
 			"label": "Young's Modulus (E)",
 			"symbol": "E",
 			"units": "MPa",
-			"info": "Young's Modulus of your material",
+			"info": "Material Young's Modulus",
 			"default": 200000,
 			"min": 0,
-			"step": 1000,
-			"nullable": true
+			"step": 1000
 		},
 		"I_z": {
 			"type": "number",
@@ -142,8 +138,7 @@
 			"info": "Moment of Inertia about Z Axis",
 			"default": "2.2e8",
 			"min": 0,
-			"step": 1000,
-			"nullable": true
+			"step": 1000
 		}
 	}
 }
