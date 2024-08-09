@@ -1,7 +1,7 @@
-let creator = SVGCreator; //Create SVGCreator object
-let input = SKYCIV_DESIGN.designConfig.getInput(); //Retrieve input from HTML form
+var creator = SVGCreator; //Create SVGCreator object
+var input = SKYCIV_DESIGN.designConfig.getInput(); //Retrieve input from HTML form
 
-let units = { //Default unit system
+var units = { //Default unit system
     F: 'kN',
     L: 'mm',
     M: 'kN/m'
@@ -14,15 +14,15 @@ if (SKYCIV_DESIGN.units.getCurrentUnitSystem() == 'imperial') { //Convert units 
 }
 
 // Define graphic window size
-let total_width = jQuery('#ui-div').width(); //Find pixel size of graphic window from HTML
-let total_height = 0.6 * total_width;
-let font_size = Math.round(0.06 * total_height);
+var total_width = jQuery('#ui-div').width(); //Find pixel size of graphic window from HTML
+var total_height = 0.6 * total_width;
+var font_size = Math.round(0.06 * total_height);
 
 // Initialise creator
 creator.initialize({ total_height: total_height, total_width: total_width, center: true });
 
 // Set Scale Factors
-let dL_ratio = input.PL_dist / input.L;
+var dL_ratio = input.PL_dist / input.L;
 
 // Draw Beam
 creator.addRect({
@@ -69,60 +69,6 @@ if (input.w != 0) { // Draw Beam (UDL)
     });
 }
 
-if (input.P != 0) { //Draw Point Load
-    creator.dimLineDrawer({ // Draw Point Load Dimension Line
-        x1: 0.1 * total_width,
-        y1: 0.6 * total_height - total_height / 5,
-        x2: 0.1 * total_width + (dL_ratio * 0.8 * total_width),
-        y2: 0.6 * total_height - total_height / 5,
-        pos: "start",
-        color: "black",
-        text: input.PL_dist,
-        text_size: 0.8 * font_size,
-        arrow_size: font_size / 3
-    })
-
-    //Vertical Arrow Line
-    creator.addLine({
-        start_x: 0.1 * total_width + (dL_ratio * 0.8 * total_width),
-        start_y: 0.595 * total_height,
-        end_x: 0.1 * total_width + (dL_ratio * 0.8 * total_width),
-        end_y: 0.595 * total_height - total_height / 3.5,
-        stroke: 'red',
-        stroke_width: '2',
-    });
-
-    //Left Diagonal Arrow Line
-    creator.addLine({
-        start_x: 0.1 * total_width + (dL_ratio * 0.8 * total_width) - total_width / 40,
-        start_y: 0.595 * total_height - total_width / 40,
-        end_x: 0.1 * total_width + (dL_ratio * 0.8 * total_width),
-        end_y: 0.595 * total_height,
-        stroke: 'red',
-        stroke_width: '2',
-    });
-
-    //Right Diagonal Arrow Line
-    creator.addLine({
-        start_x: 0.1 * total_width + (dL_ratio * 0.8 * total_width),
-        start_y: 0.595 * total_height,
-        end_x: 0.1 * total_width + (dL_ratio * 0.8 * total_width) + total_width / 40,
-        end_y: 0.595 * total_height - total_width / 40,
-        stroke: 'red',
-        stroke_width: '2',
-    });
-
-    //Point Load Label
-    creator.addText({
-        x: 0.1 * total_width + (dL_ratio * 0.8 * total_width),
-        y: 0.595 * total_height - total_height / 3.5 - total_height / 12,
-        text_value: `${input.P} ${units.F}`,
-        font_size: font_size,
-        text_anchor: 'middle',
-        fill_color: 'red'
-    });
-}
-
 // Draw Support A
 creator.addCircle({
     center_x: 0.1 * total_width,
@@ -132,7 +78,7 @@ creator.addCircle({
     fill_color: 'black'
 });
 
-// left triangle
+// Triangle Left Side
 creator.addLine({
     start_x: 0.1 * total_width,
     start_y: 0.65 * total_height + 0.0125 * total_width,
@@ -142,7 +88,7 @@ creator.addLine({
     stroke_width: '1.5',
 });
 
-// right triangle
+// Triangle Right Side
 creator.addLine({
     start_x: 0.1 * total_width,
     start_y: 0.65 * total_height + 0.0125 * total_width,
@@ -152,7 +98,7 @@ creator.addLine({
     stroke_width: '1.5',
 });
 
-//bottom triangle
+// Triangle Btm Side
 creator.addLine({
     start_x: 0.1 * total_width - 0.0125 * total_width,
     start_y: 0.65 * total_height + 0.0125 * total_width + 0.0175 * total_width,
@@ -171,7 +117,7 @@ creator.addCircle({
     fill_color: 'black'
 });
 
-// left triangle
+// Triangle Left Side
 creator.addLine({
     start_x: 0.9 * total_width,
     start_y: 0.65 * total_height + 0.0125 * total_width,
@@ -181,7 +127,7 @@ creator.addLine({
     stroke_width: '1.5',
 });
 
-// right triangle
+// Triangle Right Side
 creator.addLine({
     start_x: 0.9 * total_width,
     start_y: 0.65 * total_height + 0.0125 * total_width,
@@ -191,7 +137,7 @@ creator.addLine({
     stroke_width: '1.5',
 });
 
-//bottom triangle
+// Triangle Btm Side
 creator.addLine({
     start_x: 0.9 * total_width - 0.0125 * total_width,
     start_y: 0.65 * total_height + 0.0125 * total_width + 0.0175 * total_width,
@@ -214,6 +160,6 @@ creator.addText({
 
 // Output Diagram
 creator.endSVG();
-let html = creator.getSVGHtml();
-let ui_div = document.getElementById('ui-div');
+var html = creator.getSVGHtml();
+var ui_div = document.getElementById('ui-div');
 ui_div.innerHTML = html;
