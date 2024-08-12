@@ -1,16 +1,16 @@
 {
 	"meta": {
-		"name": "Simply Supported Beam Analysis",
-		"short_description": "Simple Supported Beam Analysis Software to calculate reactions, bending, shear and deflection results.",
-		"tags": "beam, calculator",
+		"name": "Insert Name",
+		"short_description": "Insert short description.",
+		"tags": "calculator",
 		"category": "analysis",
 		"access": "private",
 		"default_unit_system": "metric",
 		"contact": {
-			"name": "George Chard",
+			"name": "Insert Name",
 			"role": "",
-			"email": "George.Chard@skyciv.com",
-			"company": "SkyCiv Engineering",
+			"email": "Insert Email",
+			"company": "Insert Company",
 			"logo": "https://skyciv.com/media/logos/logo-pack/SkyCiv_Logo_Dark_Poweredby.png"
 		}
 	},
@@ -21,89 +21,21 @@
 			"qd_center": true, 
 			"allow_graphic_report": false
 		},
-		"Arrangement_Heading": {
+		"Heading": {
 			"type": "heading",
-			"label": "Arrangement"
+			"label": "Heading"
 		},
-		"L": {
+		"first_input": {
 			"type": "number",
 			"integer": true,
-			"label": "Beam Span (L)",
-			"symbol": "L",
+			"label": "Input",
+			"symbol": "Input",
 			"units": "mm",
-			"info": "Length of your Beam",
-			"default": 6000,
-			"min": 10,
-			"max": 10000
-		},
-		"Loading_Heading": {
-			"type": "heading",
-			"label": "Loading"
-		},
-		"w": {
-			"type": "dropdown",
-			"label": "Distributed Load",
-			"symbol": "w",
-			"units": "kN",
-			"info": "Uniform distributed load on your beam",
-			"options": [
-				{
-					"name": "No Force",
-					"value": 0
-				},
-				{
-					"name": 1,
-					"value": 1
-				},
-				{
-					"name": 2,
-					"value": 2,
-					"selected": true
-				},
-				{
-					"name": 5,
-					"value": 5
-				}
-			]
-		},
-		"Deflection_Heading": {
-			"type": "heading",
-			"label": "Deflection"
-		},
-		"calculate_deflection": {
-			"type": "checkbox",
-			"symbol": "Deflection",
-			"label": "Calculate Deflection",
-			"default": "unchecked",
-			"visible_variables": {
-				"unchecked": [
-					["hide", "E"],
-					["hide", "I_z"]
-				],
-				"checked": [
-					["show", "E"],
-					["show", "I_z"]
-				]
-			}
-		},
-		"E": {
-			"type": "number",
-			"label": "Young's Modulus (E)",
-			"symbol": "E",
-			"units": "MPa",
-			"info": "Material Young's Modulus",
-			"default": 200000,
+			"info": "Info tip for this input.",
+			"default": 10,
+			"step": 1,
 			"min": 0,
-			"step": 1000
-		},
-		"I_z": {
-			"type": "number",
-			"label": "Moment of Inertia (I<sub>Z</sub>)",
-			"symbol": "I_z",
-			"units": "mm^4",
-			"info": "Moment of Inertia about Z Axis",
-			"default": "5e6",
-			"min": 0
+			"max": 100
 		}
 	}
 }
