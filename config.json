@@ -45,7 +45,7 @@
 			"label": "Distributed Load",
 			"symbol": "w",
 			"units": "kN",
-			"info": "The uniform distributed load magnitude on your beam",
+			"info": "Uniform distributed load on your beam",
 			"options": [
 				{
 					"name": "No Force",
