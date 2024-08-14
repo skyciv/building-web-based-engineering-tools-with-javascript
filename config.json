@@ -1,6 +1,6 @@
 {
 	"meta": {
-		"name": "Insert Name",
+		"name": "Build Your Own Calculator",
 		"short_description": "Insert short description.",
 		"tags": "calculator",
 		"category": "analysis",
@@ -15,27 +15,184 @@
 		}
 	},
 	"input_variables": {
-		"ui_div": {
+		"Section_Heading": {
+			"type": "heading",
+			"label": "Section"
+		},
+		"input_div": {
 			"type": "div",
-			"id": "ui-div",
+			"id": "input-div",
+			"allow_graphic_report": false
+		},
+		"centre_div": {
+			"type": "div",
+			"id": "centre-div",
 			"qd_center": true, 
 			"allow_graphic_report": false
 		},
-		"Heading": {
-			"type": "heading",
-			"label": "Heading"
+		"dimensions_subheading": {
+			"type": "subheading",
+			"label": "Dimensions"
 		},
-		"first_input": {
+		"height": {
 			"type": "number",
-			"integer": true,
-			"label": "Input",
-			"symbol": "Input",
+			"integer": false,
+			"label": "Height",
+			"symbol": "H",
 			"units": "mm",
-			"info": "Info tip for this input.",
+			"info": "Total section height.",
+			"greater_than": "flange_thickness",
+			"default": 250,
+			"step": 1,
+			"min": 100,
+			"max": 1000
+		},
+		"width": {
+			"type": "number",
+			"integer": false,
+			"label": "Width",
+			"symbol": "B",
+			"units": "mm",
+			"info": "Total section width.",
+			"greater_than": "web_thickness",
+			"default": 100,
+			"step": 1,
+			"min": 50,
+			"max": 600
+		},
+		"thickness_subheading": {
+			"type": "subheading",
+			"label": "Thickness"
+		},
+		"flange_thickness": {
+			"type": "number",
+			"integer": false,
+			"label": "Flange Thickness",
+			"symbol": "t_f",
+			"units": "mm",
+			"info": "Thickness of section flange.",
 			"default": 10,
 			"step": 1,
-			"min": 0,
-			"max": 100
+			"min": 1,
+			"max": 30
+		},
+		"web_thickness": {
+			"type": "number",
+			"integer": false,
+			"label": "Web Thickness",
+			"symbol": "t_w",
+			"units": "mm",
+			"info": "Thickness of section web.",
+			"default": 5,
+			"step": 1,
+			"min": 1,
+			"max": 20
+		},
+		"graphics_subheading": {
+			"type": "subheading",
+			"label": "Section Graphics"
+		},
+		"show_axis": {
+			"type": "checkbox",
+			"symbol": "Axis",
+			"label": "Show Axis",
+			"highlight_row": true,
+			"default": "checked",
+			"visible_variables": {
+				"checked" : [
+					["show","axis_table"]
+					],
+				"unchecked" : [
+					["hide","axis_table"]
+					]
+			}
+		},
+		"axis_table": {
+			"type": "table",
+			"label": "Options",
+			"table": {
+				"name": "Axis Options", 
+				"version": 2,
+				"selector": "#my-entry-table", 
+				"auto_new_row_on_enter_key": true,
+				"auto_validate ": true,
+				"remove_buttons": true,
+				"columns": [
+					{
+						"id": "vertical_axis_colour",
+						"title": "Vertical Axis Colour",
+						"default_value": "green",
+						"type": "string",
+						"cell_type": "dropdown",
+						"cell_dropdown_values": ["green", "red", "blue"],
+						"cell_dropdown_labels": ["Green", "Red", "Blue"],
+						"cell_width": "auto"
+					},
+					{
+						"id": "horizontal_axis_colour",
+						"title": "Horizontal Axis Colour",
+						"default_value": "blue",
+						"type": "string",
+						"cell_type": "dropdown",
+						"cell_dropdown_values": ["green", "red", "blue"],
+						"cell_dropdown_labels": ["Green", "Red", "Blue"],
+						"cell_width": "auto"
+					},
+					{
+						"id": "axis_size",
+						"title": "Axis Size",
+						"default_value": "medium",
+						"type": "string",
+						"cell_type": "dropdown",
+						"cell_dropdown_values": ["small", "medium", "large"],
+						"cell_dropdown_labels": ["Small", "Medium", "Large"],
+						"cell_width": "auto"
+					}
+				]
+			}
+		},
+		"Graph_Heading": {
+			"type": "heading",
+			"label": "Graph"
+		},
+		"data_label": {
+			"type": "text",
+			"label": "Dataset Label",
+			"symbol": "Dataset",
+			"default": "My Data"
+		},
+		"x_label": {
+			"type": "text",
+			"label": "X Axis Label",
+			"symbol": "X \\;Label",
+			"default": "Distance",
+			"display_units": "X",
+			"combine_with": "y_label",
+			"combined_label": "Axis Labels"
+		},
+		"y_label": {
+			"type": "text",
+			"label": "Y Axis Label",
+			"symbol": "Y \\;Label",
+			"display_units": "Y",
+			"default": "Value"
+		},
+		"display_series": {
+			"type": "radio",
+			"label": "Display Series",
+			"symbol": "Series",
+			"default": "log_e",
+			"options": [
+				{
+					"selected": true,
+					"name": "Log<sub>e</sub>",
+					"value": "log_e"
+				},
+				{
+					"name": "e<sup>x</sup>",
+					"value": "exp"
+				}
+			]
 		}
 	}
 }
