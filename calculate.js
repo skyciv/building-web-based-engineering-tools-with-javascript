@@ -163,16 +163,25 @@ module.exports = async function (input_json) {
 				'label': 'Results',
 				'units': 'heading',
 			},
-			'utility_ratio': {
-				'label': 'Utility Ratio',
-				'value': 0.75,
+			'safe_utility_ratio': {
+				'label': 'Safe Utility Ratio',
+				'value': 0.75, //Used for utilisation ratios.
+				"units": "utility",
+			},
+			'warn_utility_ratio': {
+				'label': 'Warning Utility Ratio',
+				'value': 0.95, //Used for utilisation ratios.
+				"units": "utility",
+			},
+			'fail_utility_ratio': {
+				'label': 'Fail Utility Ratio',
+				'value': 1.1, //Used for utilisation ratios.
 				"units": "utility",
 			},
 			'utility_boolean': {
 				'label': 'Pass / Fail Utility',
-				'value': 1,
-				"units": "utility_boolean",
-				"note": "Value of 1 represents pass, 0 represents fail."
+				'value': 1, //Used for pass/fail results. Value of 1 represents pass, 0 represents fail
+				"units": "utility_boolean"
 			},
 		}
 	};
