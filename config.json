@@ -17,7 +17,7 @@
 	"input_variables": {
 		"Section_Heading": {
 			"type": "heading",
-			"label": "Section"
+			"label": "Section Input"
 		},
 		"input_div": {
 			"type": "div",
@@ -100,97 +100,215 @@
 			"default": "checked",
 			"visible_variables": {
 				"checked" : [
-					["show","axis_table"]
+					["show","vertical_axis_colour"],
+					["show","horizontal_axis_colour"],
+					["show","axis_size"]
 					],
 				"unchecked" : [
-					["hide","axis_table"]
+					["hide","vertical_axis_colour"],
+					["hide","horizontal_axis_colour"],
+					["hide","axis_size"]
 					]
 			}
 		},
-		"axis_table": {
-			"type": "table",
-			"label": "Options",
-			"table": {
-				"name": "Axis Options", 
-				"version": 2,
-				"selector": "#my-entry-table", 
-				"auto_new_row_on_enter_key": true,
-				"auto_validate ": true,
-				"remove_buttons": true,
-				"columns": [
-					{
-						"id": "vertical_axis_colour",
-						"title": "Vertical Axis Colour",
-						"default_value": "green",
-						"type": "string",
-						"cell_type": "dropdown",
-						"cell_dropdown_values": ["green", "red", "blue"],
-						"cell_dropdown_labels": ["Green", "Red", "Blue"],
-						"cell_width": "auto"
-					},
-					{
-						"id": "horizontal_axis_colour",
-						"title": "Horizontal Axis Colour",
-						"default_value": "blue",
-						"type": "string",
-						"cell_type": "dropdown",
-						"cell_dropdown_values": ["green", "red", "blue"],
-						"cell_dropdown_labels": ["Green", "Red", "Blue"],
-						"cell_width": "auto"
-					},
-					{
-						"id": "axis_size",
-						"title": "Axis Size",
-						"default_value": "medium",
-						"type": "string",
-						"cell_type": "dropdown",
-						"cell_dropdown_values": ["small", "medium", "large"],
-						"cell_dropdown_labels": ["Small", "Medium", "Large"],
-						"cell_width": "auto"
-					}
-				]
-			}
-		},
-		"Graph_Heading": {
-			"type": "heading",
-			"label": "Graph"
-		},
-		"data_label": {
-			"type": "text",
-			"label": "Dataset Label",
-			"symbol": "Dataset",
-			"default": "My Data"
-		},
-		"x_label": {
-			"type": "text",
-			"label": "X Axis Label",
-			"symbol": "X \\;Label",
-			"default": "Distance",
-			"display_units": "X",
-			"combine_with": "y_label",
-			"combined_label": "Axis Labels"
-		},
-		"y_label": {
-			"type": "text",
-			"label": "Y Axis Label",
-			"symbol": "Y \\;Label",
-			"display_units": "Y",
-			"default": "Value"
-		},
-		"display_series": {
-			"type": "radio",
-			"label": "Display Series",
-			"symbol": "Series",
-			"default": "log_e",
+		"vertical_axis_colour": {
+			"type": "dropdown",
+			"label": "Vertical Axis Colour",
+			"symbol": "Vertical \\:Axis",
+			"info": "Colour of vertical axis in section diagram.",
+			"nullable": false,
 			"options": [
 				{
 					"selected": true,
-					"name": "Log<sub>e</sub>",
-					"value": "log_e"
+					"name": "Green",
+					"value": "green"
 				},
 				{
-					"name": "e<sup>x</sup>",
-					"value": "exp"
+					"name": "Red",
+					"value": "red"
+				},
+				{
+					"name": "Blue",
+					"value": "blue"
+				}
+			]
+		},
+		"horizontal_axis_colour": {
+			"type": "dropdown",
+			"label": "Horizontal Axis Colour",
+			"symbol": "Horizontal \\:Axis",
+			"info": "Colour of horizontal axis in section diagram.",
+			"nullable": false,
+			"options": [
+				{
+					"name": "Green",
+					"value": "green"
+				},
+				{
+					"name": "Red",
+					"value": "red"
+				},
+				{
+					"selected": true,
+					"name": "Blue",
+					"value": "blue"
+				}
+			]
+		},
+		"axis_size": {
+			"type": "dropdown",
+			"label": "Axis Size",
+			"symbol": "Axis \\; Size",
+			"info": "Size of axis in section diagram.",
+			"nullable": false,
+			"options": [
+				{
+					"name": "Small",
+					"value": "small"
+				},
+				{
+					"selected": true,
+					"name": "Medium",
+					"value": "medium"
+				},
+				{
+					"name": "Large",
+					"value": "large"
+				}
+			]
+		},
+		"Table_Heading": {
+			"type": "heading",
+			"label": "Input Table"
+		},
+		"input_table": {
+            "type": "table",
+            "label": "Input Table",
+            "button_text": "Open Table",
+			"min_rows": 2,
+            "default_data":[
+                ["1", "A", 10, 7, "Beam", "option_1"],
+                ["2", "B", 20, 15, "Column", "option_3"],
+				["3", "C", 30, 18, "Slab", "option_2"],
+				["4", "D", 40, 25, "Footing", "option_3"],
+				["5", "E", 50, 55, "Wall", "option_2"]
+            ],
+            "exclude_from_input_table": true,
+            "info": "Spreadsheet-style input table.",
+            "table": {
+                "name": "My Input Table",
+                "notes": "",
+                "version": 1,
+                "selector": "#vertical-line-entry-table",
+				"selectable": true,
+                "auto_new_row_on_enter_key": true,
+                "auto_validate ": true,
+                "remove_buttons": false,
+                "columns": [
+					{
+                        "id": "num_id",
+                        "title": "Numerical ID",
+						"tooltip": "Auto-incrementing numerical ID column.",
+                        "type": "integer",
+						"auto_increment_id": true,
+                        "cell_type": "input_text",
+                        "cell_width": "auto"
+                    },
+					{
+                        "id": "alph_id",
+                        "title": "Alphabetical ID",
+                        "tooltip": "Auto-incrementing alphabetical ID column.",
+						"default_value": "A",
+                        "type": "string",
+                        "cell_type": "input_text",
+                        "cell_width": "auto",
+						"increment": "alphabetical",
+						"nullable": true
+                    },
+                    {
+                        "id": "custom_increment",
+                        "title": "Custom Increment",
+                        "tooltip": "New rows auto-increment by 10 compared to the previous row.",
+                        "default_value": 0,
+                        "minimum": 0,
+                        "type": "number",
+                        "cell_type": "input_text",
+                        "cell_width": "auto",
+						"increment_new": 10,
+						"unique": true,
+                        "disabled": false
+                    },
+                    {
+                        "id": "number_input",
+                        "title": "Number Input",
+                        "default_value": 0,
+                        "maximum": 0,
+                        "type": "number",
+                        "cell_type": "input_text",
+                        "cell_width": "auto",
+						"decimal_places": 3
+                    },
+					{
+                        "id": "text_input",
+                        "title": "Text Input",
+						"default_value": "Insert Text",
+                        "type": "string",
+                        "cell_type": "input_text",
+                        "cell_width": "auto",
+						"nullable": true
+                    },
+					{
+						"id": "dropdown_input",
+						"title": "Dropdown Input",
+						"default_value": "1",
+						"type": "string",
+						"cell_type": "dropdown",
+						"cell_dropdown_values": ["1", "2", "3"],
+						"cell_dropdown_labels": ["Option 1", "Option 2", "Option 3"],
+						"cell_width": "auto"
+					}
+                ]
+            }
+        },
+		"Other_Inputs": {
+			"type": "heading",
+			"label": "Other Inputs"
+		},
+		"plain_text_input": {
+			"type": "text",
+			"label": "Text Input",
+			"symbol": "Text",
+			"default": "Input Text"
+		},
+		"combined_input_1": {
+			"type": "text",
+			"label": "Combined Input 1",
+			"symbol": "Combined \\;1",
+			"default": "First",
+			"display_units": "1",
+			"combine_with": "combined_input_2",
+			"combined_label": "Combined Inputs"
+		},
+		"combined_input_2": {
+			"type": "text",
+			"label": "Combined Input 2",
+			"symbol": "Combined \\;2",
+			"display_units": "2",
+			"default": "Second"
+		},
+		"radio_input": {
+			"type": "radio",
+			"label": "Radio Input",
+			"symbol": "Radio",
+			"default": "option_1",
+			"options": [
+				{
+					"name": "Option 1",
+					"value": "option_1"
+				},
+				{
+					"name": "Option 2",
+					"value": "option_2"
 				}
 			]
 		}
