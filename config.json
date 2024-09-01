@@ -14,6 +14,9 @@
 			"logo": "https://skyciv.com/media/logos/logo-pack/SkyCiv_Logo_Dark_Poweredby.png"
 		}
 	},
+	"settings": {
+		"use_docs_as_centre_graphic": true
+	},
 	"input_variables": {
 		"Section_Heading": {
 			"type": "heading",
