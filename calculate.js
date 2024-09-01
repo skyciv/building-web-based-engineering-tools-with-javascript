@@ -131,6 +131,11 @@ module.exports = async function (input_json) {
 	let chartHTML = await ChartJS.createChart(chartWidth, chartHeight, chartConfiguration);
 	ReportHelpers.print('', chartHTML, '');
 
+	//Output Colours
+	// RED: #DB2828
+	// GREEN: #21BA45
+	// ORANGE: #F2711C
+
 	//Output Example
 	var output = { //The output object is used to summarise the calculation results for printing in the Output tab
 		'report': REPORT,
@@ -183,6 +188,12 @@ module.exports = async function (input_json) {
 				'value': 1, //Used for pass/fail results. Value of 1 represents pass, 0 represents fail
 				"units": "utility_boolean"
 			},
+			'custom_utility': {
+				'label': 'Custom Utility',
+				"units": "custom_box", //Used to create custom utility outputs
+				"value": "ALERT",
+				"color": "#F2711C" //Assign colour of output here
+			}
 		}
 	};
 
