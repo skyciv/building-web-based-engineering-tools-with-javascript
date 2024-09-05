@@ -38,16 +38,16 @@ function SectionDrawerExample(){
     var section_drawer = SectionDrawer();
 
     svg_html = section_drawer.drawIBeam(
-        'black', //Section colour
-        input.width, //Section width
-        input.height, //Section height
-        input.flange_thickness, //Section flange thickness
-        input.web_thickness, //Section web thickness
-        300, //Graphic height (pixels)
-        200, //Graphic width (pixels)
-        `${units.L}`, //Unit system
-        axis, //Axis object
-        false //Section rotation
+        'black', // Section colour
+        input.width, // Section width
+        input.height, // Section height
+        input.flange_thickness, // Section flange thickness
+        input.web_thickness, // Section web thickness
+        300, // Graphic height (pixels)
+        200, // Graphic width (pixels)
+        units.L, // Unit system
+        axis, // Axis object
+        false // Section rotation
     );
 
     // Output Diagram
