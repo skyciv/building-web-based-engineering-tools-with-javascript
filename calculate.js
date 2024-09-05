@@ -1,15 +1,15 @@
 module.exports = async function (input_json) {
 
-	let {height, width, flange_thickness, web_thickness, input_table} = input_json; //Retrieve variables from config.json input
+	let { height, width, flange_thickness, web_thickness, input_table } = input_json; //Retrieve variables from config.json input
 
 	//Input Table Import Example
 	let input_table_data = [["Numerical<br>ID", "Alphabetical<br>ID", "Custom<br>Increment", "Number<br>Input", "Text<br>Input", "Dropdown<br>Input"]];
 
-	for(let i = 0; i < input_table.length; i++){
+	for (let i = 0; i < input_table.length; i++) {
 		input_table_data.push([input_table[i].num_id, input_table[i].alph_id, input_table[i].custom_increment, input_table[i].number_input, input_table[i].text_input, input_table[i].dropdown_input])
 	}
 
-	options = { //Table Options - Used to customise widths and text justification
+	let options = { //Table Options - Used to customise widths and text justification
 		heading: "Input Table Data",
 		text_aligns: ["center", "center", "center", "center", "center", "center"],
 	};
@@ -22,9 +22,9 @@ module.exports = async function (input_json) {
 	logger(JSON.stringify(section_properties)) //The logger function allows you to print calculation values to the log (top right hand corner)
 
 	const PP = (val, precision = 0) => { //Function used to print values to specified number of decimal places, or scientific notation. Null precision prints value as an integer.
-		if(precision == "E"){
+		if(precision == "E") {
 			return PrettyPrint.pretty_print.print(val, {"significant_digits": 4, "method": "engineering"});
-		}else{
+		} else {
 			return PrettyPrint.pretty_print.print(val, {"precision": precision});
 		}
 	}
@@ -49,25 +49,26 @@ module.exports = async function (input_json) {
 		["Torsion Constant", "[math]J = " + PP(section_properties.results.J, "E") + " \\;mm^4[math]"],
 		["Warping Constant", "[math]I_w = " + PP(section_properties.results.Iw, "E") + " \\;mm^6[math]"],
 	];
-			
-	options = { //Table Options
+	
+	// Table Options
+	options = { 
 			heading: "Section Properties Table Example",
 			widths: ["60%", "40%"],
 			text_aligns: ["left", "center"],
 	};
 	ReportHelpers.quickTable(property_table_data, options); //Print table to report
 
-	//MathJax Example
+	// MathJax Example
 	ReportHelpers.heading("MathJax Example", 2);
 	let x = 2;
 	let x_squared = x**2;
 	let sqrt_x = x**(0.5);
 	let x_div_2 = x/2;
 
-	ReportHelpers.print(`MathJax<br>Example`,`[math]Let \\; x = 2\\;mm[math]`, ``)
-	ReportHelpers.print(``,`[math]x^2 = 4\\;mm^2[math]`, ``)
-	ReportHelpers.print(``,`[math]\\sqrt{2} = 1.414\\;mm^{-1}[math]`, ``)
-	ReportHelpers.print(``,`[math]\\frac{x}{2} = 1\\;mm[math]`, ``)
+	ReportHelpers.print('MathJax<br>Example','[math]Let \\; x = 2\\;mm[math]', '')
+	ReportHelpers.print('','[math]x^2 = 4\\;mm^2[math]', '')
+	ReportHelpers.print('','[math]\\sqrt{2} = 1.414\\;mm^{-1}[math]', '')
+	ReportHelpers.print('','[math]\\frac{x}{2} = 1\\;mm[math]', '')
 
 	//Draw Graph Example
 	ReportHelpers.heading("Graph Example", 2);
@@ -104,26 +105,26 @@ module.exports = async function (input_json) {
 			x: {
 				display: true,
 				title: {
-				display: true,
-				text: `X-Axis`
+					display: true,
+					text: 'X-Axis'
 				}
 			},
 			y: {
 				display: true,
 				title: {
-				display: true,
-				text: `Y-Axis`
+					display: true,
+					text: 'Y-Axis'
 				}
 			}
 			},
 			plugins: {
-			legend: { //Legend options
-				position: 'top',
-			},
-			title: { //Graph title options (disabled in this case)
-				display: false,
-				text: 'Chart Title'
-			}
+				legend: { //Legend options
+					position: 'top',
+				},
+				title: { //Graph title options (disabled in this case)
+					display: false,
+					text: 'Chart Title'
+				}
 			}
 		}
 	};
@@ -131,7 +132,7 @@ module.exports = async function (input_json) {
 	let chartHTML = await ChartJS.createChart(chartWidth, chartHeight, chartConfiguration);
 	ReportHelpers.print('', chartHTML, '');
 
-	//Output Colours
+	// Output Colours
 	// RED: #DB2828
 	// GREEN: #21BA45
 	// ORANGE: #F2711C

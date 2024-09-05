@@ -23,7 +23,7 @@ function SectionDrawerExample(){
 
     var axis = false; //If false, don't draw axis
 
-    if(input.show_axis){ //If true, draw axis. Assign axis inputs to axis object 
+    if (input.show_axis) { //If true, draw axis. Assign axis inputs to axis object 
             axis = {
                 vertical_label: "Y",
                 horizontal_label: "Z",
@@ -57,8 +57,4 @@ function SectionDrawerExample(){
     ui_div.innerHTML = html;
 }
 
-
-
-
 SectionDrawerExample();
-
