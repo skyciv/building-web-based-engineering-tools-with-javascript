@@ -10,7 +10,6 @@
 
 ### Handy Links
 
-- Quick Design Udemy Course: 
 - Build Your Own Calc Github: https://github.com/skyciv/building-web-based-engineering-tools-with-javascript
 - Quick Design Documentation: https://skyciv.com/api/v3/docs/quick-design
 - ChartJS Documentation: https://www.chartjs.org/docs/latest/
