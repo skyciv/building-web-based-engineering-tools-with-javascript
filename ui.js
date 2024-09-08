@@ -1,4 +1,3 @@
-var creator = SVGCreator; //Create SVGCreator object
 var input = SKYCIV_DESIGN.designConfig.getInput(); //Retrieve input from HTML form
 
 var units = { //Default unit system
@@ -13,153 +12,49 @@ if (SKYCIV_DESIGN.units.getCurrentUnitSystem() == 'imperial') { //Convert units 
     units.M = 'kip/ft';
 }
 
-// Define graphic window size
-var total_width = jQuery('#ui-div').width(); //Find pixel size of graphic window from HTML
-var total_height = 0.6 * total_width;
-var font_size = Math.round(0.06 * total_height);
+// --- Input Tab SVG Diagram ---
+function SectionDrawerExample(){
+    var creator = SVGCreator; //Create SVGCreator object
+    var total_width = jQuery('#input-div').width(); //Set SVG total width (Find pixel size of graphic window from HTML)
+    var total_height = 0.6 * total_width; //Set SVG total height
 
-// Initialise creator
-creator.initialize({ total_height: total_height, total_width: total_width, center: true });
+    // Initialise creator
+    creator.initialize({ total_height: total_height, total_width: total_width, center: true });
 
-// Set Scale Factors
-var dL_ratio = input.PL_dist / input.L;
+    var axis = false; //If false, don't draw axis
 
-// Draw Beam
-creator.addRect({
-    x: 0.1 * total_width,
-    y: 0.6 * total_height,
-    width: 0.8 * total_width,
-    height: 0.05 * total_height,
-    stroke: 'black',
-    fill_color: '#d3d3d3'
-});
+    if (input.show_axis) { //If true, draw axis. Assign axis inputs to axis object 
+            axis = {
+                vertical_label: "Y",
+                horizontal_label: "Z",
+                vertical_color: input.vertical_axis_colour,
+                horizontal_color: input.horizontal_axis_colour,
+                vertical_axis_label_color: input.vertical_axis_colour,
+                horizontal_axis_label_color: input.horizontal_axis_colour,
+                axis_size: input.axis_size
+            }
+    }
 
-//Beam Length Dimension Line
-creator.dimLineDrawer({
-    x1: 0.1 * total_width,
-    y1: 0.75 * total_height,
-    x2: 0.9 * total_width,
-    y2: 0.75 * total_height,
-    pos: "start",
-    color: "black",
-    text: input.L + ' ' + units.L,
-    text_size: 0.8 * font_size,
-    arrow_size: font_size / 3
-});
+    var section_drawer = SectionDrawer();
 
-if (input.w != 0) { // Draw Beam (UDL)
-    creator.addRect({
-        x: 0.1 * total_width,
-        y: 0.5 * total_height,
-        width: 0.8 * total_width,
-        height: 0.1 * total_height,
-        stroke: 'green',
-        fill_color: 'green',
-        fill_opacity: '50%'
-    });
+    svg_html = section_drawer.drawIBeam(
+        'black', // Section colour
+        input.width, // Section width
+        input.height, // Section height
+        input.flange_thickness, // Section flange thickness
+        input.web_thickness, // Section web thickness
+        300, // Graphic height (pixels)
+        200, // Graphic width (pixels)
+        units.L, // Unit system
+        axis, // Axis object
+        false // Section rotation
+    );
 
-    //UDL Label
-    creator.addText({
-        x: 0.1 * total_width + (0.8 * total_width) / 2,
-        y: 0.5 * total_height - total_height / 12,
-        text_value: `${input.w} ${units.M}`,
-        font_size: font_size,
-        text_anchor: 'middle',
-        fill_color: 'green'
-    });
+    // Output Diagram
+    creator.endSVG();
+    var html = creator.getSVGHtml();
+    var ui_div = document.getElementById('input-div');
+    ui_div.innerHTML = html;
 }
 
-// Draw Support A
-creator.addCircle({
-    center_x: 0.1 * total_width,
-    center_y: 0.65 * total_height + 0.00625 * total_width,
-    radius: 0.00625 * total_width,
-    stroke: 'black',
-    fill_color: 'black'
-});
-
-// Triangle Left Side
-creator.addLine({
-    start_x: 0.1 * total_width,
-    start_y: 0.65 * total_height + 0.0125 * total_width,
-    end_x: 0.1 * total_width - 0.0125 * total_width,
-    end_y: 0.65 * total_height + 0.0125 * total_width + 0.0175 * total_width,
-    stroke: 'black',
-    stroke_width: '1.5',
-});
-
-// Triangle Right Side
-creator.addLine({
-    start_x: 0.1 * total_width,
-    start_y: 0.65 * total_height + 0.0125 * total_width,
-    end_x: 0.1 * total_width + 0.0125 * total_width,
-    end_y: 0.65 * total_height + 0.0125 * total_width + 0.0175 * total_width,
-    stroke: 'black',
-    stroke_width: '1.5',
-});
-
-// Triangle Btm Side
-creator.addLine({
-    start_x: 0.1 * total_width - 0.0125 * total_width,
-    start_y: 0.65 * total_height + 0.0125 * total_width + 0.0175 * total_width,
-    end_x: 0.1 * total_width + 0.0125 * total_width,
-    end_y: 0.65 * total_height + 0.0125 * total_width + 0.0175 * total_width,
-    stroke: 'black',
-    stroke_width: '1.5',
-});
-
-//Draw Support B
-creator.addCircle({
-    center_x: 0.9 * total_width,
-    center_y: 0.65 * total_height + 0.00625 * total_width,
-    radius: 0.00625 * total_width,
-    stroke: 'black',
-    fill_color: 'black'
-});
-
-// Triangle Left Side
-creator.addLine({
-    start_x: 0.9 * total_width,
-    start_y: 0.65 * total_height + 0.0125 * total_width,
-    end_x: 0.9 * total_width - 0.0125 * total_width,
-    end_y: 0.65 * total_height + 0.0125 * total_width + 0.0175 * total_width,
-    stroke: 'black',
-    stroke_width: '1.5',
-});
-
-// Triangle Right Side
-creator.addLine({
-    start_x: 0.9 * total_width,
-    start_y: 0.65 * total_height + 0.0125 * total_width,
-    end_x: 0.9 * total_width + 0.0125 * total_width,
-    end_y: 0.65 * total_height + 0.0125 * total_width + 0.0175 * total_width,
-    stroke: 'black',
-    stroke_width: '1.5',
-});
-
-// Triangle Btm Side
-creator.addLine({
-    start_x: 0.9 * total_width - 0.0125 * total_width,
-    start_y: 0.65 * total_height + 0.0125 * total_width + 0.0175 * total_width,
-    end_x: 0.9 * total_width + 0.0125 * total_width,
-    end_y: 0.65 * total_height + 0.0125 * total_width + 0.0175 * total_width,
-    stroke: 'black',
-    stroke_width: '1.5',
-});
-
-//Add Label to Diagram
-creator.addText({
-    x: 0.5 * total_width,
-    y: 0.8 * total_height,
-    text_value: `LOAD DIAGRAM`,
-    font_size: 0.7 * font_size,
-    text_decoration: "underline",
-    text_anchor: 'middle',
-    fill_color: 'black'
-});
-
-// Output Diagram
-creator.endSVG();
-var html = creator.getSVGHtml();
-var ui_div = document.getElementById('ui-div');
-ui_div.innerHTML = html;
+SectionDrawerExample();
