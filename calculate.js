@@ -22,8 +22,7 @@ module.exports = async function (input_json) {
 		loads_array: [0.3, 0.3, 0.3, [0.3, -0.3], -0.3, -0.3],
 		member_length: L,
 		loads_unit: "kN", 
-		result_label_z: "SFD",
-		result_label_y: "SFD",
+		result_label: "Shear Force",
 		result_label_x: "Beam Length", // Optional 
 		graph_title: "Shear Force Diagram",
 		color: "red",
