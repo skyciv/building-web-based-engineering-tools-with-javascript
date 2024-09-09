@@ -1,1 +1,0 @@
-## Welcome to SkyCiv Build Your Own Calculator!
