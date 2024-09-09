@@ -48,11 +48,13 @@ creator.dimLineDrawer({
 });
 
 if (input.w != 0) { // Draw Beam (UDL)
+    let scaling_factor = input.w / 10;
+
     creator.addRect({
         x: 0.1 * total_width,
-        y: 0.5 * total_height,
+        y: 0.6 * total_height - scaling_factor * total_height,
         width: 0.8 * total_width,
-        height: 0.1 * total_height,
+        height: scaling_factor * total_height,
         stroke: 'green',
         fill_color: 'green',
         fill_opacity: '50%'
@@ -61,7 +63,7 @@ if (input.w != 0) { // Draw Beam (UDL)
     //UDL Label
     creator.addText({
         x: 0.1 * total_width + (0.8 * total_width) / 2,
-        y: 0.5 * total_height - total_height / 12,
+        y: 0.6 * total_height - scaling_factor * total_height - 1.5 * font_size,
         text_value: `${input.w} ${units.M}`,
         font_size: font_size,
         text_anchor: 'middle',
