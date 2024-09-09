@@ -1,5 +1,6 @@
 module.exports = async function (input_json) {
 
+	//Input Declaration
 	let {L, w, calculate_deflection, E, I_z} = input_json; //Retrieve variables from config.json input
 
 	//Calculations

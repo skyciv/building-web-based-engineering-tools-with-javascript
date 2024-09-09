@@ -4,13 +4,13 @@ var input = SKYCIV_DESIGN.designConfig.getInput(); //Retrieve input from HTML fo
 var units = { //Default unit system
     F: 'kN',
     L: 'mm',
-    M: 'kN/m'
+    W: 'kN/m'
 };
 
 if (SKYCIV_DESIGN.units.getCurrentUnitSystem() == 'imperial') { //Convert units to imperial if selected by user
     units.F = 'kip';
     units.L = 'in';
-    units.M = 'kip/ft';
+    units.W = 'kip/ft';
 }
 
 // Define graphic window size
@@ -64,7 +64,7 @@ if (input.w != 0) { // Draw Beam (UDL)
     creator.addText({
         x: 0.1 * total_width + (0.8 * total_width) / 2,
         y: 0.6 * total_height - scaling_factor * total_height - 1.5 * font_size,
-        text_value: `${input.w} ${units.M}`,
+        text_value: `${input.w} ${units.W}`,
         font_size: font_size,
         text_anchor: 'middle',
         fill_color: 'green'
