@@ -7,11 +7,9 @@ This repository contains a blank template which will be built upon during the co
 1. Download this repository as a ZIP file, or clone the repository in VS Code.
 2. Open the Project Template folder in VS Code.
 3. Log into SkyCiv and navigate to the Build Your Own Calculator tab.
-4. Click Get Started.
-5. Enter a name and description for your calculator.
-6. Navigate to Code -> Upload Code.
-7. Upload your Project Template Folder.
-8. As development progresses, re-upload this folder to test out the application!
+4. Click Upload Code.
+5. Upload the *1.0 Project Template Folder*.
+6. As development progresses, re-upload this folder to test out the application!
 
 ### Development Documentation
 SkyCiv has an extensive library of documentation on how to use the Quick Design framework. If you get stuck, or just want to explore the capabilities of SkyCiv Quick Design, follow the link below.
