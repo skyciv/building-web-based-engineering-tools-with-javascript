@@ -6,6 +6,7 @@ module.exports = async function (input_json) {
 	//Calculations
 
 	//Reporting
+	
 
 	var output = {
 		'report': REPORT,

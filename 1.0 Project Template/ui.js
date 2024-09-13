@@ -13,6 +13,14 @@ if (SKYCIV_DESIGN.units.getCurrentUnitSystem() == 'imperial') { //Convert units 
     units.W = 'kip/ft';
 }
 
+// Define graphic window size
+var total_width = jQuery('#ui-div').width(); //Find pixel size of graphic window from HTML
+var total_height = 0.6 * total_width;
+
+// Initialise creator
+creator.initialize({ total_height: total_height, total_width: total_width, center: true });
+
+
 // Output Diagram
 creator.endSVG();
 var html = creator.getSVGHtml();

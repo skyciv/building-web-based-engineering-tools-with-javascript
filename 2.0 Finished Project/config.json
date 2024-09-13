@@ -7,9 +7,9 @@
 		"access": "private",
 		"default_unit_system": "metric",
 		"contact": {
-			"name": "George Chard",
+			"name": "",
 			"role": "",
-			"email": "George.Chard@skyciv.com",
+			"email": "",
 			"company": "SkyCiv Engineering",
 			"logo": "https://skyciv.com/media/logos/logo-pack/SkyCiv_Logo_Dark_Poweredby.png"
 		}
@@ -18,8 +18,7 @@
 		"ui_div": {
 			"type": "div",
 			"id": "ui-div",
-			"qd_center": true, 
-			"allow_graphic_report": false
+			"qd_center": true
 		},
 		"Arrangement_Heading": {
 			"type": "heading",
@@ -31,10 +30,9 @@
 			"label": "Beam Span (L)",
 			"symbol": "L",
 			"units": "mm",
-			"info": "Length of your Beam",
 			"default": 6000,
 			"min": 10,
-			"max": 10000
+			"max": 10000 
 		},
 		"Loading_Heading": {
 			"type": "heading",
@@ -44,8 +42,8 @@
 			"type": "dropdown",
 			"label": "Distributed Load",
 			"symbol": "w",
-			"units": "kN",
-			"info": "Uniform distributed load on your beam",
+			"units": "kN/m",
+			"info": "Distributed load in kN/m.",
 			"options": [
 				{
 					"name": "No Force",
@@ -74,7 +72,7 @@
 			"type": "checkbox",
 			"symbol": "Deflection",
 			"label": "Calculate Deflection",
-			"default": "unchecked",
+			"default": false,
 			"visible_variables": {
 				"unchecked": [
 					["hide", "E"],
@@ -88,20 +86,20 @@
 		},
 		"E": {
 			"type": "number",
-			"label": "Young's Modulus (E)",
+			"label": "Elastic Modulus (E)",
 			"symbol": "E",
 			"units": "MPa",
-			"info": "Material Young's Modulus",
+			"info": "Material Youngs Modulus",
 			"default": 200000,
 			"min": 0,
-			"step": 1000
+			"step": 50
 		},
 		"I_z": {
 			"type": "number",
-			"label": "Moment of Inertia (I<sub>Z</sub>)",
+			"label": "Moment of Inertia (Iz)",
 			"symbol": "I_z",
 			"units": "mm^4",
-			"info": "Moment of Inertia about Z Axis",
+			"info": "Moment of Inertia about Z axis",
 			"default": "5e6",
 			"min": 0
 		}
