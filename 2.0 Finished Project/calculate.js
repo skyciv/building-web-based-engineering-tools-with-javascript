@@ -5,7 +5,7 @@ module.exports = async function (input_json) {
 
 	//Calculations
 	let reaction_force = (w * L) / (2 * 1000);
-	let peak_moment = (w * L**2)/(8 * 1000);
+	let peak_moment = (w * L**2)/(8 * 1000000); //Correction in units conversion
 
 	if(calculate_deflection){ //If check deflection is true, carry out deflection calculations
 		var peak_deflection = (5 * w * L**4) / (384 * E * I_z);
