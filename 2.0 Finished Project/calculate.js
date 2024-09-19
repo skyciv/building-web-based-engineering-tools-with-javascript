@@ -14,12 +14,12 @@ module.exports = async function (input_json) {
 	}
 
 	//Reporting
-	ReportHelpers.print(`Reaction Force`, `[math]Reaction = w*L/2 = ${reaction_force} kN[math]`), ``;
-	ReportHelpers.print(`Peak Moment`, `[math]Moment = \\frac{w*L^2}{8} = ${peak_moment} kNm[math]`), ``;
+	ReportHelpers.print(`Reaction Force`, `[math]Reaction = w*L/2 = ${reaction_force} kN[math]`, ``);
+	ReportHelpers.print(`Peak Moment`, `[math]Moment = \\frac{w*L^2}{8} = ${peak_moment} kNm[math]`, ``);
 
 	if(calculate_deflection){ //If check deflection is true, display deflection calculations
-		ReportHelpers.print(`Peak Deflection`, `[math]Deflection = \\frac{5 * w * L^4}{384 * E * I_z} = ${peak_deflection} mm[math]`), ``;
-		ReportHelpers.print(`Span Ratio`, `[math]Ratio = \\frac{L}{${span_ratio}}[math]`), ``;
+		ReportHelpers.print(`Peak Deflection`, `[math]Deflection = \\frac{5 * w * L^4}{384 * E * I_z} = ${peak_deflection} mm[math]`, ``);
+		ReportHelpers.print(`Span Ratio`, `[math]Ratio = \\frac{L}{${span_ratio}}[math]`, ``);
 	}
 
 	ReportHelpers.drawGraph({ 	//Draw shear force diagram
